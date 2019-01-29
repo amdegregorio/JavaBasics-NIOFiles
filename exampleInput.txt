@@ -1,0 +1,5 @@
+This is a line of example text from a file
+This is an even longer line of example text
+This is a line of example text that's wondering if there's more coffee
+This line of example text already drank all the coffee
+This line of example text cried "wee wee wee" all the way home
