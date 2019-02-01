@@ -38,16 +38,16 @@ public class FilesExamples {
    public void displayFileInformation() throws IOException {
       System.out.println("--Displaying some file information--");
       Path path = FileSystems.getDefault().getPath(TEXT_FILE_NAME);
-      System.out.println(String.format("Does file %s exist? %b", TEXT_FILE_NAME, Files.exists(path)));
-      System.out.println(String.format("Does file %s not exist? %b", TEXT_FILE_NAME, Files.notExists(path)));
-      System.out.println(String.format("Is %s a directory? %b", TEXT_FILE_NAME, Files.isDirectory(path)));
-      System.out.println(String.format("Is %s a regular file? %b", TEXT_FILE_NAME, Files.isRegularFile(path)));
-      System.out.println(String.format("%s permissions (rwx): %b %b %b", TEXT_FILE_NAME, Files.isReadable(path), Files.isWritable(path), Files.isExecutable(path)));
+      System.out.printf("Does file %s exist? %b\n", TEXT_FILE_NAME, Files.exists(path));
+      System.out.printf("Does file %s not exist? %b\n", TEXT_FILE_NAME, Files.notExists(path));
+      System.out.printf("Is %s a directory? %b\n", TEXT_FILE_NAME, Files.isDirectory(path));
+      System.out.printf("Is %s a regular file? %b\n", TEXT_FILE_NAME, Files.isRegularFile(path));
+      System.out.printf("%s permissions (rwx): %b %b %b\n", TEXT_FILE_NAME, Files.isReadable(path), Files.isWritable(path), Files.isExecutable(path));
       FileTime lastModifiedTime = Files.getLastModifiedTime(path);
-      System.out.println(String.format("%s was last modified on %s", TEXT_FILE_NAME, new java.util.Date(lastModifiedTime.toMillis()).toString()));
-      System.out.println(String.format("Size of %s: %d bytes", TEXT_FILE_NAME, Files.size(path)));
-      System.out.println(String.format("%s content type is %s", TEXT_FILE_NAME, Files.probeContentType(path)));
-      System.out.println(String.format("%s content type is %s", JPG_FILE_NAME, Files.probeContentType(FileSystems.getDefault().getPath(JPG_FILE_NAME))));
+      System.out.printf("%s was last modified on %s\n", TEXT_FILE_NAME, new java.util.Date(lastModifiedTime.toMillis()).toString());
+      System.out.printf("Size of %s: %d bytes\n", TEXT_FILE_NAME, Files.size(path));
+      System.out.printf("%s content type is %s\n", TEXT_FILE_NAME, Files.probeContentType(path));
+      System.out.printf("%s content type is %s\n", JPG_FILE_NAME, Files.probeContentType(FileSystems.getDefault().getPath(JPG_FILE_NAME)));
       System.out.println();
    }
    
@@ -84,7 +84,7 @@ public class FilesExamples {
       
       System.out.println("Using 'readAllBytes'");
       byte[] coffeeBytes = Files.readAllBytes(binPath);
-      System.out.println(String.format("Binary file %s contains %d bytes", JPG_FILE_NAME, coffeeBytes.length));
+      System.out.printf("Binary file %s contains %d bytes\n", JPG_FILE_NAME, coffeeBytes.length);
       System.out.println();
       
       System.out.println("Using 'newInputStream'");
@@ -95,7 +95,7 @@ public class FilesExamples {
             //Normally we'd do some useful work on our input bytes
             counter++;
          }
-         System.out.println(String.format("Read all the bytes in %d times through our loop", counter));
+         System.out.printf("Read all the bytes in %d times through our loop\n", counter);
       }
       
       System.out.println();
@@ -127,9 +127,9 @@ public class FilesExamples {
       Path binSource = FileSystems.getDefault().getPath(JPG_FILE_NAME);
       Path binDest = FileSystems.getDefault().getPath(COPY_JPG_NAME);
       Path targetText = Files.copy(textSource, textDest, StandardCopyOption.REPLACE_EXISTING);
-      System.out.println(String.format("Copied %s to %s", TEXT_FILE_NAME, targetText.toString()));
+      System.out.printf("Copied %s to %s\n", TEXT_FILE_NAME, targetText.toString());
       Path targetBin = Files.copy(binSource, binDest, StandardCopyOption.REPLACE_EXISTING);
-      System.out.println(String.format("Copied %s to %s", JPG_FILE_NAME, targetBin.toString()));
+      System.out.printf("Copied %s to %s\n", JPG_FILE_NAME, targetBin.toString());
       System.out.println();
    }
 
